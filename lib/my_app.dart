@@ -5,6 +5,8 @@ import 'package:task_management_app/configs/localizations/app_locale.dart';
 import 'package:task_management_app/configs/pages/page.dart';
 import 'package:task_management_app/configs/themes/theme.dart';
 
+import 'package:task_management_app/shared/bindings/initial_binding.dart';
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -25,6 +27,7 @@ class MyApp extends StatelessWidget {
           // =================== DEBUG =======================
           debugShowCheckedModeBanner: false,
           // =================== ROUTE =======================
+          initialBinding: InitialBinding(),
           initialRoute: CustomPage.initial,
           getPages: CustomPage.routes,
         );

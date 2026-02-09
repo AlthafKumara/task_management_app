@@ -14,4 +14,9 @@ final Map<String, String> idId = {
   LangKeys.registerTitle: 'Daftar',
   LangKeys.registerDescription: 'Daftar ke akun baru Anda',
   LangKeys.registerButton: 'Daftar',
+  LangKeys.emptyNameAlert: 'Nama tidak boleh kosong',
+  LangKeys.emptyEmailAlert: 'Email tidak boleh kosong',
+  LangKeys.emptyPasswordAlert: 'Kata sandi tidak boleh kosong',
+  LangKeys.invalidEmailAlert: 'Email tidak valid',
+  LangKeys.invalidPasswordAlert: 'Kata sandi tidak valid',
 };

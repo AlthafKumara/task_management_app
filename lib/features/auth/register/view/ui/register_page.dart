@@ -8,6 +8,7 @@ import 'package:task_management_app/shared/styles/app_color.dart';
 import 'package:task_management_app/shared/widgets/global_button.dart';
 import 'package:task_management_app/shared/widgets/global_flag_switch.dart';
 import 'package:task_management_app/shared/widgets/global_textfield.dart';
+import 'package:task_management_app/utils/functions/validator.dart';
 
 class RegisterPage extends GetView<RegisterController> {
   const RegisterPage({super.key});
@@ -15,16 +16,13 @@ class RegisterPage extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appbar(context, controller),
+      appBar: _appbar(context),
       body: _body(context),
       bottomNavigationBar: _bottomnav(context),
     );
   }
 
-  PreferredSizeWidget _appbar(
-    BuildContext context,
-    RegisterController controller,
-  ) {
+  PreferredSizeWidget _appbar(BuildContext context) {
     return AppBar(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       elevation: 0,
@@ -50,88 +48,97 @@ class RegisterPage extends GetView<RegisterController> {
     return Padding(
       padding: EdgeInsetsGeometry.symmetric(horizontal: 24.w, vertical: 16.h),
       child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              padding: EdgeInsets.all(10.w),
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.circular(12.r),
-              ),
-              child: Icon(Icons.check, color: AppColor.black, size: 25.sp),
-            ),
-            SizedBox(height: 16.h),
-            Text(
-              RegisterConstant.registerTitle.tr,
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            SizedBox(height: 8.h),
-            Text(
-              RegisterConstant.registerDescription.tr,
-              style: Theme.of(context).textTheme.displayLarge,
-            ),
-            SizedBox(height: 24.h),
-            GlobalTextfield.textFieldLarge(
-              context: context,
-              hintText: RegisterConstant.name.tr,
-              controller: TextEditingController(),
-              keyboardType: TextInputType.emailAddress,
-              validator: null,
-              label: RegisterConstant.name.tr,
-            ),
-            SizedBox(height: 16.h),
-            GlobalTextfield.textFieldLarge(
-              context: context,
-              hintText: RegisterConstant.email.tr,
-              controller: TextEditingController(),
-              keyboardType: TextInputType.emailAddress,
-              validator: null,
-              label: RegisterConstant.email.tr,
-            ),
-            SizedBox(height: 16.h),
-            GlobalTextfield.textFieldLarge(
-              context: context,
-              hintText: RegisterConstant.password.tr,
-              controller: TextEditingController(),
-              keyboardType: TextInputType.text,
-              obscureText: true,
-              validator: null,
-              label: RegisterConstant.password.tr,
-              suffixIcon: IconButton(
-                icon: Icon(
-                  Icons.visibility,
-                  color: Theme.of(context).colorScheme.surface,
+        physics: const NeverScrollableScrollPhysics(),
+        child: Form(
+          key: controller.formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.all(10.w),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.circular(12.r),
                 ),
-                onPressed: () {},
+                child: Icon(Icons.check, color: AppColor.black, size: 25.sp),
               ),
-            ),
-            SizedBox(height: 12.h),
-            Align(
-              alignment: Alignment.centerRight,
-              child: GestureDetector(
-                onTap: () {},
-                child: Text(
-                  LoginConstant.forgotPassword.tr,
-                  style: Theme.of(context).textTheme.displaySmall,
-                ),
+              SizedBox(height: 16.h),
+              Text(
+                RegisterConstant.registerTitle.tr,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
-            ),
-            SizedBox(height: 64.h),
-            Row(
-              children: [
-                Expanded(
-                  child: GlobalButton.primaryButton(
-                    context: context,
-                    textButton: RegisterConstant.registerButton.tr,
-                    onPressed: () {},
+              SizedBox(height: 8.h),
+              Text(
+                RegisterConstant.registerDescription.tr,
+                style: Theme.of(context).textTheme.displayLarge,
+              ),
+              SizedBox(height: 24.h),
+              GlobalTextfield.textFieldLarge(
+                context: context,
+                hintText: RegisterConstant.name.tr,
+                controller: controller.nameController,
+                keyboardType: TextInputType.emailAddress,
+                validator: FieldValidator.validateName,
+                label: RegisterConstant.name.tr,
+              ),
+              SizedBox(height: 16.h),
+              GlobalTextfield.textFieldLarge(
+                context: context,
+                hintText: RegisterConstant.email.tr,
+                controller: controller.emailController,
+                keyboardType: TextInputType.emailAddress,
+                validator: FieldValidator.validateEmail,
+                label: RegisterConstant.email.tr,
+              ),
+              SizedBox(height: 16.h),
+              Obx(
+                () => GlobalTextfield.textFieldLarge(
+                  context: context,
+                  hintText: RegisterConstant.password.tr,
+                  controller: controller.passwordController,
+                  keyboardType: TextInputType.text,
+                  obscureText: controller.isPasswordVisible.value,
+                  validator: FieldValidator.validatePassword,
+                  label: RegisterConstant.password.tr,
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      Icons.visibility,
+                      color: Theme.of(context).colorScheme.surface,
+                    ),
+                    onPressed: () {
+                      controller.togglePasswordVisibility();
+                    },
                   ),
                 ),
-              ],
-            ),
-          ],
+              ),
+              SizedBox(height: 12.h),
+              Align(
+                alignment: Alignment.centerRight,
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    LoginConstant.forgotPassword.tr,
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                ),
+              ),
+              SizedBox(height: 64.h),
+              Row(
+                children: [
+                  Expanded(
+                    child: GlobalButton.primaryButton(
+                      context: context,
+                      textButton: RegisterConstant.registerButton.tr,
+                      onPressed: () {
+                        controller.handleRegister();
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -14,4 +14,9 @@ final Map<String, String> enUs = {
   LangKeys.registerTitle: 'Register',
   LangKeys.registerDescription: 'Register to make new account',
   LangKeys.registerButton: 'Register',
+  LangKeys.emptyNameAlert: 'Name cannot be empty',
+  LangKeys.emptyEmailAlert: 'Email cannot be empty',
+  LangKeys.emptyPasswordAlert: 'Password cannot be empty',
+  LangKeys.invalidEmailAlert: 'Invalid email',
+  LangKeys.invalidPasswordAlert: 'Invalid password',
 };
