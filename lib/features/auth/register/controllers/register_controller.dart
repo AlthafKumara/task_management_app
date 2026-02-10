@@ -6,7 +6,11 @@ import 'package:task_management_app/shared/controllers/global_flag_switch_contro
 import 'package:task_management_app/shared/widgets/global_snackbar.dart';
 
 class RegisterController extends GetxController {
-  final registerRepo = RegisterRepository();
+  final registerRepo = RegisterRepository(
+    authDao: Get.find(),
+    userDao: Get.find(),
+    localSecureStorage: Get.find(),
+  );
   final flagSwitchC = Get.find<GlobalFlagSwitchController>();
 
   var isPasswordVisible = false.obs;
@@ -32,6 +36,7 @@ class RegisterController extends GetxController {
       );
       if (response.status == "success") {
         GlobalSnackbar.showSuccess(response.message);
+        navigateToHome();
       } else {
         GlobalSnackbar.showError(response.message);
       }
@@ -42,5 +47,9 @@ class RegisterController extends GetxController {
 
   void navigateToLogin() {
     Get.offNamed(CustomRoute.login);
+  }
+
+  void navigateToHome() {
+    Get.offAllNamed(CustomRoute.home);
   }
 }

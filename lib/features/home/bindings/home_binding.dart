@@ -1,16 +1,13 @@
 import 'package:get/get.dart';
 import 'package:task_management_app/configs/data/local/drift/daos/auth_dao.dart';
 import 'package:task_management_app/configs/data/local/drift/daos/user_dao.dart';
-import 'package:task_management_app/configs/data/local/local_secure_storage.dart';
+import 'package:task_management_app/features/home/controllers/home_controller.dart';
 
-import 'package:task_management_app/features/auth/register/controllers/register_controller.dart';
-
-class RegisterBinding extends Bindings {
+class HomeBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => AuthDao(Get.find()));
     Get.lazyPut(() => UserDao(Get.find()));
-    Get.lazyPut(() => LocalSecureStorage());
-    Get.lazyPut(() => RegisterController());
+    Get.lazyPut(() => HomeController());
   }
 }

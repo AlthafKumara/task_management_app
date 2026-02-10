@@ -6,6 +6,8 @@ import 'package:task_management_app/features/auth/register/bindings/register_bin
 import 'package:task_management_app/features/auth/register/view/ui/register_page.dart';
 import 'package:task_management_app/features/auth/splash/bindings/splash_binding.dart';
 import 'package:task_management_app/features/auth/splash/view/ui/splash_page.dart';
+import 'package:task_management_app/features/home/bindings/home_binding.dart';
+import 'package:task_management_app/features/home/view/ui/home_page.dart';
 
 class CustomPage {
   CustomPage._();
@@ -28,6 +30,12 @@ class CustomPage {
       binding: RegisterBinding(),
       name: CustomRoute.register,
       page: () => const RegisterPage(),
+    ),
+
+    GetPage(
+      binding: HomeBinding(),
+      name: CustomRoute.home,
+      page: () => const HomePage(),
     ),
   ];
 }
