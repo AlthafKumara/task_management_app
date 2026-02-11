@@ -9,5 +9,6 @@ class HomeBinding extends Bindings {
     Get.lazyPut(() => AuthDao(Get.find()));
     Get.lazyPut(() => UserDao(Get.find()));
     Get.lazyPut(() => HomeController());
+    
   }
 }

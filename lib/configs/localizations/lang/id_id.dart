@@ -1,6 +1,8 @@
 import '../lang_keys.dart';
 
 final Map<String, String> idId = {
+
+  // ===================== AUTH =====================
   LangKeys.email: 'Email',
   LangKeys.password: 'Kata Sandi',
   LangKeys.confirmPassword: 'Konfirmasi Kata Sandi',
@@ -19,4 +21,20 @@ final Map<String, String> idId = {
   LangKeys.emptyPasswordAlert: 'Kata sandi tidak boleh kosong',
   LangKeys.invalidEmailAlert: 'Email tidak valid',
   LangKeys.invalidPasswordAlert: 'Kata sandi tidak valid',
+
+  // ===================== BOTTOM NAV =====================
+  LangKeys.homeLabel: 'Beranda',
+  LangKeys.calendarLabel: 'Kalendar',
+  LangKeys.statsLabel: 'Statistik',
+  LangKeys.profileLabel: 'Profil',
+
+  // ===================== PROFILE =====================
+  LangKeys.profileTitle : 'Profil',
+  LangKeys.editProfileTitle: 'Ubah Profil',
+  LangKeys.darkmodeLabel: 'Mode Gelap',
+  LangKeys.languageLabel: 'Bahasa',
+  LangKeys.notificationLabel: 'Notifikasi',
+  LangKeys.helpLabel: 'Bantuan',
+  LangKeys.aboutLabel: 'Tentang',
+  LangKeys.logoutLabel: 'Keluar',
 };

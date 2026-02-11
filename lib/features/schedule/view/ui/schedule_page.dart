@@ -1,0 +1,29 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:task_management_app/features/schedule/controllers/schedule_controller.dart';
+import 'package:task_management_app/shared/widgets/global_bottom_nav.dart';
+
+class SchedulePage extends GetView<ScheduleController> {
+  const SchedulePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: _appBar(),
+      body: _body(),
+      bottomNavigationBar: _bottomNavigationBar(),
+    );
+  }
+
+  PreferredSizeWidget _appBar() {
+    return AppBar(title: const Text("Schedule"));
+  }
+
+  Widget _body() {
+    return const Center(child: Text("Body"));
+  }
+
+  Widget _bottomNavigationBar() {
+    return GlobalBottomNav(initialindex: 1);
+  }
+}

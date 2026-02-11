@@ -1,6 +1,7 @@
 import '../lang_keys.dart';
 
 final Map<String, String> enUs = {
+  // ===================== AUTH =====================
   LangKeys.email: 'Email',
   LangKeys.password: 'Password',
   LangKeys.confirmPassword: 'Confirm Password',
@@ -19,4 +20,20 @@ final Map<String, String> enUs = {
   LangKeys.emptyPasswordAlert: 'Password cannot be empty',
   LangKeys.invalidEmailAlert: 'Invalid email',
   LangKeys.invalidPasswordAlert: 'Invalid password',
+
+  // ===================== BOTTOM NAV =====================
+  LangKeys.homeLabel: 'Home',
+  LangKeys.calendarLabel: 'Calendar',
+  LangKeys.statsLabel: 'Stats',
+  LangKeys.profileLabel: 'Profile',
+
+  // ===================== PROFILE =====================
+  LangKeys.profileTitle: 'Profile',
+  LangKeys.editProfileTitle: 'Edit Profile',
+  LangKeys.darkmodeLabel: 'Dark mode',
+  LangKeys.languageLabel: 'Language',
+  LangKeys.notificationLabel: 'Notification',
+  LangKeys.helpLabel: 'Help',
+  LangKeys.aboutLabel: 'About',
+  LangKeys.logoutLabel: 'Logout',
 };

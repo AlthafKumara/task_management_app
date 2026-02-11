@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_management_app/utils/enums/api_status_enum.dart';
 
 class GlobalSnackbar {
   GlobalSnackbar._();
 
   static void showSuccess(String message) {
     Get.snackbar(
-      "Success",
+      ApiStatus.success.name,
       message,
       backgroundColor: Colors.green,
       colorText: Colors.white,

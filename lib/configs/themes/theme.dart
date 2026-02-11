@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task_management_app/shared/styles/app_color.dart';
 import 'package:task_management_app/shared/styles/app_text_style.dart';
 
@@ -41,6 +42,28 @@ class AppTheme {
         displayMedium: AppTextStyle.description2(color: AppColor.grey1),
         displaySmall: AppTextStyle.description3(color: AppColor.grey1),
       ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: AppColor.secondarybackgroundLight,
+        elevation: 0,
+        selectedItemColor: AppColor.primaryYellowColor,
+        unselectedItemColor: AppColor.grey1,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
+        selectedIconTheme: IconThemeData(
+          color: AppColor.primaryYellowColor,
+          size: 24,
+        ),
+        unselectedIconTheme: IconThemeData(color: AppColor.grey1, size: 24),
+        selectedLabelStyle: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+        ),
+        unselectedLabelStyle: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w400,
+        ),
+      ),
     );
   }
 
@@ -57,7 +80,7 @@ class AppTheme {
         onSecondary: AppColor.white,
         error: AppColor.danger1,
         onError: AppColor.white,
-        surface: AppColor.grey2,
+        surface: AppColor.tertiaryBackgroundDark,
         onSurface: AppColor.white,
       ),
       appBarTheme: const AppBarTheme(
@@ -81,6 +104,28 @@ class AppTheme {
         displayLarge: AppTextStyle.description1(color: AppColor.grey1),
         displayMedium: AppTextStyle.description2(color: AppColor.grey1),
         displaySmall: AppTextStyle.description3(color: AppColor.grey1),
+      ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        elevation: 0,
+        selectedItemColor: AppColor.primaryYellowColor,
+        unselectedItemColor: AppColor.grey1,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        type: BottomNavigationBarType.fixed,
+        selectedIconTheme: IconThemeData(
+          color: AppColor.primaryYellowColor,
+          size: 20.sp,
+        ),
+        unselectedIconTheme: IconThemeData(color: AppColor.grey1, size: 20.sp),
+        selectedLabelStyle: TextStyle(
+          fontSize: Theme.of(context).textTheme.bodySmall?.fontSize,
+          fontWeight: FontWeight.w600,
+        ),
+        unselectedLabelStyle: TextStyle(
+          fontSize: Theme.of(context).textTheme.bodySmall?.fontSize,
+          fontWeight: FontWeight.w400,
+        ),
       ),
     );
   }

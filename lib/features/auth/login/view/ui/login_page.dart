@@ -5,7 +5,7 @@ import 'package:task_management_app/features/auth/login/constants/login_constant
 import 'package:task_management_app/features/auth/login/controllers/login_controller.dart';
 import 'package:task_management_app/shared/styles/app_color.dart';
 import 'package:task_management_app/shared/widgets/global_button.dart';
-import 'package:task_management_app/shared/widgets/global_flag_switch.dart';
+import 'package:task_management_app/shared/widgets/global_switch.dart';
 import 'package:task_management_app/shared/widgets/global_textfield.dart';
 import 'package:task_management_app/utils/functions/validator.dart';
 
@@ -30,7 +30,7 @@ class LoginPage extends GetView<LoginController> {
       actions: [
         Obx(
           () => SizedBox(
-            child: GlobalFlagSwitch.flagSwitch(
+            child: GlobalSwitch.flagSwitch(
               context: context,
               value: controller.flagSwitchC.isEnglish.value,
               onChanged: (value) {

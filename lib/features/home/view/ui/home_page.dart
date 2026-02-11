@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_management_app/features/home/controllers/home_controller.dart';
+import 'package:task_management_app/shared/widgets/global_bottom_nav.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
@@ -30,7 +31,7 @@ class HomePage extends GetView<HomeController> {
   Widget _body(BuildContext context) {
     return Center(
       child: Obx(() {
-        final user = controller.userdata.value;
+        final user = controller.dataUser.value;
         if (user == null) {
           return const Center(child: CircularProgressIndicator());
         }
@@ -43,6 +44,6 @@ class HomePage extends GetView<HomeController> {
   }
 
   Widget _bottomNavigationBar(BuildContext context) {
-    return SizedBox();
+    return GlobalBottomNav(initialindex: 0);
   }
 }

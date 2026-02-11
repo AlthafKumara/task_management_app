@@ -1,4 +1,6 @@
 abstract class LangKeys {
+
+  // ===================== AUTH =====================
   static const email = 'email';
   static const password = 'password';
   static const confirmPassword = 'confirm_password';
@@ -17,4 +19,20 @@ abstract class LangKeys {
   static const registerTitle = 'register';
   static const registerDescription = 'register_description';
   static const registerButton = 'register_button';
+
+  // ===================== BOTTOM NAV =====================
+  static const homeLabel = 'homelabel';
+  static const calendarLabel = 'calendarlabel';
+  static const statsLabel = 'statslabel';
+  static const profileLabel = 'profilelabel';
+
+  // ===================== PROFILE =====================
+  static const profileTitle = 'profiletitle';
+  static const editProfileTitle = 'edit_profiletitle';
+  static const darkmodeLabel = 'darkmodelabel';
+  static const languageLabel = 'languagelabel';
+  static const notificationLabel = 'notificationlabel';
+  static const helpLabel = 'helplabel';
+  static const aboutLabel = 'aboutlabel';
+  static const logoutLabel = 'logoutlabel';  
 }
