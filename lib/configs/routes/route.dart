@@ -6,6 +6,7 @@ abstract class CustomRoute{
   static const String stats = _Path.stats;
   static const String schedule = _Path.schedule;
   static const String profile = _Path.profile;
+  static const String editProfile = _Path.editProfile;
 
 }
 
@@ -17,4 +18,5 @@ abstract class _Path{
   static const String stats = '/stats';
   static const String schedule = '/schedule';
   static const String profile = '/profile';
+  static const String editProfile = '/edit-profile';
 }

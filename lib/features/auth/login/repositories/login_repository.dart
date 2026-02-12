@@ -35,6 +35,7 @@ class LoginRepository {
         (json) => LoginModel.fromJson(json),
       );
       await localSecureStorage.saveToken(responseData.data!.token!);
+      await authDao.deleteAllSession();
       await authDao.insertSession(
         AuthSessionCompanion(
           id: Value(responseData.data!.id!),
@@ -50,6 +51,7 @@ class LoginRepository {
           id: Value(responseData.data!.id!),
           name: Value(responseData.data!.name!),
           email: Value(responseData.data!.email!),
+          isSynced: Value(true),
           createdAt: Value(DateTime.now().toIso8601String()),
         ),
       );

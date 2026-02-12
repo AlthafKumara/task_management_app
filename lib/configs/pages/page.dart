@@ -9,6 +9,7 @@ import 'package:task_management_app/features/auth/splash/view/ui/splash_page.dar
 import 'package:task_management_app/features/home/bindings/home_binding.dart';
 import 'package:task_management_app/features/home/view/ui/home_page.dart';
 import 'package:task_management_app/features/profile/bindings/profile_binding.dart';
+import 'package:task_management_app/features/profile/view/ui/edit_profile_page.dart';
 import 'package:task_management_app/features/profile/view/ui/profile_page.dart';
 import 'package:task_management_app/features/schedule/bindings/schedule_binding.dart';
 import 'package:task_management_app/features/schedule/view/ui/schedule_page.dart';
@@ -58,6 +59,11 @@ class CustomPage {
       bindings: [ProfileBinding(), GlobalBottomNavBinding()],
       name: CustomRoute.profile,
       page: () => const ProfilePage(),
+    ),
+    GetPage(
+      binding: ProfileBinding(),
+      name: CustomRoute.editProfile,
+      page: () => const EditProfilePage(),
     ),
   ];
 }

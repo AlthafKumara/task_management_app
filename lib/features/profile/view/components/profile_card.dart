@@ -16,7 +16,7 @@ class ProfileCard extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.all(20.w),
       decoration: BoxDecoration(
-        color: AppColor.tertiaryBackgroundDark,
+        color: Theme.of(context).cardTheme.color,
         borderRadius: BorderRadius.circular(25.r),
       ),
       child: Column(
@@ -89,7 +89,7 @@ class ProfileCard extends StatelessWidget {
                   value: controller.flagSwitchC.isEnglish.value,
                   onChanged: (value) => controller.flagSwitchC.toggleFlag(),
                 ),
-              ),  
+              ),
             ],
           ),
           SizedBox(height: 12.h),

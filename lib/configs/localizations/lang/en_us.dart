@@ -30,10 +30,16 @@ final Map<String, String> enUs = {
   // ===================== PROFILE =====================
   LangKeys.profileTitle: 'Profile',
   LangKeys.editProfileTitle: 'Edit Profile',
+  LangKeys.cancelEditProfileButton: 'Cancel',
+  LangKeys.saveEditProfileButton: 'Save',
   LangKeys.darkmodeLabel: 'Dark mode',
   LangKeys.languageLabel: 'Language',
   LangKeys.notificationLabel: 'Notification',
   LangKeys.helpLabel: 'Help',
   LangKeys.aboutLabel: 'About',
   LangKeys.logoutLabel: 'Logout',
+
+  // ===================== EDIT PROFILE =====================
+  LangKeys.editProfileNameTitle: 'Full Name',
+  LangKeys.editProfileEmailTitle: 'Email Address',
 };

@@ -29,10 +29,18 @@ abstract class LangKeys {
   // ===================== PROFILE =====================
   static const profileTitle = 'profiletitle';
   static const editProfileTitle = 'edit_profiletitle';
+  static const cancelEditProfileButton = 'cancel_edit_profile_button';
+  static const saveEditProfileButton = 'save_edit_profile_button';
   static const darkmodeLabel = 'darkmodelabel';
   static const languageLabel = 'languagelabel';
   static const notificationLabel = 'notificationlabel';
   static const helpLabel = 'helplabel';
   static const aboutLabel = 'aboutlabel';
   static const logoutLabel = 'logoutlabel';  
+
+  // ===================== EDIT PROFILE =====================
+  static const editProfileNameTitle = 'edit_profile_name_title';
+  static const editProfileEmailTitle = 'edit_profile_email_title';
+
+  
 }

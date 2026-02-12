@@ -46,8 +46,22 @@ class $UserTable extends User with TableInfo<$UserTable, UserData> {
     type: DriftSqlType.string,
     requiredDuringInsert: true,
   );
+  static const VerificationMeta _isSyncedMeta = const VerificationMeta(
+    'isSynced',
+  );
   @override
-  List<GeneratedColumn> get $columns => [id, name, email, createdAt];
+  late final GeneratedColumn<bool> isSynced = GeneratedColumn<bool>(
+    'is_synced',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_synced" IN (0, 1))',
+    ),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [id, name, email, createdAt, isSynced];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -89,6 +103,14 @@ class $UserTable extends User with TableInfo<$UserTable, UserData> {
     } else if (isInserting) {
       context.missing(_createdAtMeta);
     }
+    if (data.containsKey('is_synced')) {
+      context.handle(
+        _isSyncedMeta,
+        isSynced.isAcceptableOrUnknown(data['is_synced']!, _isSyncedMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_isSyncedMeta);
+    }
     return context;
   }
 
@@ -114,6 +136,10 @@ class $UserTable extends User with TableInfo<$UserTable, UserData> {
         DriftSqlType.string,
         data['${effectivePrefix}created_at'],
       )!,
+      isSynced: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_synced'],
+      )!,
     );
   }
 
@@ -128,11 +154,13 @@ class UserData extends DataClass implements Insertable<UserData> {
   final String name;
   final String email;
   final String createdAt;
+  final bool isSynced;
   const UserData({
     required this.id,
     required this.name,
     required this.email,
     required this.createdAt,
+    required this.isSynced,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -141,6 +169,7 @@ class UserData extends DataClass implements Insertable<UserData> {
     map['name'] = Variable<String>(name);
     map['email'] = Variable<String>(email);
     map['created_at'] = Variable<String>(createdAt);
+    map['is_synced'] = Variable<bool>(isSynced);
     return map;
   }
 
@@ -150,6 +179,7 @@ class UserData extends DataClass implements Insertable<UserData> {
       name: Value(name),
       email: Value(email),
       createdAt: Value(createdAt),
+      isSynced: Value(isSynced),
     );
   }
 
@@ -163,6 +193,7 @@ class UserData extends DataClass implements Insertable<UserData> {
       name: serializer.fromJson<String>(json['name']),
       email: serializer.fromJson<String>(json['email']),
       createdAt: serializer.fromJson<String>(json['createdAt']),
+      isSynced: serializer.fromJson<bool>(json['isSynced']),
     );
   }
   @override
@@ -173,6 +204,7 @@ class UserData extends DataClass implements Insertable<UserData> {
       'name': serializer.toJson<String>(name),
       'email': serializer.toJson<String>(email),
       'createdAt': serializer.toJson<String>(createdAt),
+      'isSynced': serializer.toJson<bool>(isSynced),
     };
   }
 
@@ -181,11 +213,13 @@ class UserData extends DataClass implements Insertable<UserData> {
     String? name,
     String? email,
     String? createdAt,
+    bool? isSynced,
   }) => UserData(
     id: id ?? this.id,
     name: name ?? this.name,
     email: email ?? this.email,
     createdAt: createdAt ?? this.createdAt,
+    isSynced: isSynced ?? this.isSynced,
   );
   UserData copyWithCompanion(UserCompanion data) {
     return UserData(
@@ -193,6 +227,7 @@ class UserData extends DataClass implements Insertable<UserData> {
       name: data.name.present ? data.name.value : this.name,
       email: data.email.present ? data.email.value : this.email,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      isSynced: data.isSynced.present ? data.isSynced.value : this.isSynced,
     );
   }
 
@@ -202,13 +237,14 @@ class UserData extends DataClass implements Insertable<UserData> {
           ..write('id: $id, ')
           ..write('name: $name, ')
           ..write('email: $email, ')
-          ..write('createdAt: $createdAt')
+          ..write('createdAt: $createdAt, ')
+          ..write('isSynced: $isSynced')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, name, email, createdAt);
+  int get hashCode => Object.hash(id, name, email, createdAt, isSynced);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -216,7 +252,8 @@ class UserData extends DataClass implements Insertable<UserData> {
           other.id == this.id &&
           other.name == this.name &&
           other.email == this.email &&
-          other.createdAt == this.createdAt);
+          other.createdAt == this.createdAt &&
+          other.isSynced == this.isSynced);
 }
 
 class UserCompanion extends UpdateCompanion<UserData> {
@@ -224,12 +261,14 @@ class UserCompanion extends UpdateCompanion<UserData> {
   final Value<String> name;
   final Value<String> email;
   final Value<String> createdAt;
+  final Value<bool> isSynced;
   final Value<int> rowid;
   const UserCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
     this.email = const Value.absent(),
     this.createdAt = const Value.absent(),
+    this.isSynced = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   UserCompanion.insert({
@@ -237,16 +276,19 @@ class UserCompanion extends UpdateCompanion<UserData> {
     required String name,
     required String email,
     required String createdAt,
+    required bool isSynced,
     this.rowid = const Value.absent(),
   }) : id = Value(id),
        name = Value(name),
        email = Value(email),
-       createdAt = Value(createdAt);
+       createdAt = Value(createdAt),
+       isSynced = Value(isSynced);
   static Insertable<UserData> custom({
     Expression<String>? id,
     Expression<String>? name,
     Expression<String>? email,
     Expression<String>? createdAt,
+    Expression<bool>? isSynced,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
@@ -254,6 +296,7 @@ class UserCompanion extends UpdateCompanion<UserData> {
       if (name != null) 'name': name,
       if (email != null) 'email': email,
       if (createdAt != null) 'created_at': createdAt,
+      if (isSynced != null) 'is_synced': isSynced,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -263,6 +306,7 @@ class UserCompanion extends UpdateCompanion<UserData> {
     Value<String>? name,
     Value<String>? email,
     Value<String>? createdAt,
+    Value<bool>? isSynced,
     Value<int>? rowid,
   }) {
     return UserCompanion(
@@ -270,6 +314,7 @@ class UserCompanion extends UpdateCompanion<UserData> {
       name: name ?? this.name,
       email: email ?? this.email,
       createdAt: createdAt ?? this.createdAt,
+      isSynced: isSynced ?? this.isSynced,
       rowid: rowid ?? this.rowid,
     );
   }
@@ -289,6 +334,9 @@ class UserCompanion extends UpdateCompanion<UserData> {
     if (createdAt.present) {
       map['created_at'] = Variable<String>(createdAt.value);
     }
+    if (isSynced.present) {
+      map['is_synced'] = Variable<bool>(isSynced.value);
+    }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
     }
@@ -302,6 +350,7 @@ class UserCompanion extends UpdateCompanion<UserData> {
           ..write('name: $name, ')
           ..write('email: $email, ')
           ..write('createdAt: $createdAt, ')
+          ..write('isSynced: $isSynced, ')
           ..write('rowid: $rowid')
           ..write(')'))
         .toString();
@@ -700,6 +749,7 @@ typedef $$UserTableCreateCompanionBuilder =
       required String name,
       required String email,
       required String createdAt,
+      required bool isSynced,
       Value<int> rowid,
     });
 typedef $$UserTableUpdateCompanionBuilder =
@@ -708,6 +758,7 @@ typedef $$UserTableUpdateCompanionBuilder =
       Value<String> name,
       Value<String> email,
       Value<String> createdAt,
+      Value<bool> isSynced,
       Value<int> rowid,
     });
 
@@ -736,6 +787,11 @@ class $$UserTableFilterComposer extends Composer<_$AppDatabase, $UserTable> {
 
   ColumnFilters<String> get createdAt => $composableBuilder(
     column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get isSynced => $composableBuilder(
+    column: $table.isSynced,
     builder: (column) => ColumnFilters(column),
   );
 }
@@ -767,6 +823,11 @@ class $$UserTableOrderingComposer extends Composer<_$AppDatabase, $UserTable> {
     column: $table.createdAt,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<bool> get isSynced => $composableBuilder(
+    column: $table.isSynced,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$UserTableAnnotationComposer
@@ -789,6 +850,9 @@ class $$UserTableAnnotationComposer
 
   GeneratedColumn<String> get createdAt =>
       $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<bool> get isSynced =>
+      $composableBuilder(column: $table.isSynced, builder: (column) => column);
 }
 
 class $$UserTableTableManager
@@ -823,12 +887,14 @@ class $$UserTableTableManager
                 Value<String> name = const Value.absent(),
                 Value<String> email = const Value.absent(),
                 Value<String> createdAt = const Value.absent(),
+                Value<bool> isSynced = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => UserCompanion(
                 id: id,
                 name: name,
                 email: email,
                 createdAt: createdAt,
+                isSynced: isSynced,
                 rowid: rowid,
               ),
           createCompanionCallback:
@@ -837,12 +903,14 @@ class $$UserTableTableManager
                 required String name,
                 required String email,
                 required String createdAt,
+                required bool isSynced,
                 Value<int> rowid = const Value.absent(),
               }) => UserCompanion.insert(
                 id: id,
                 name: name,
                 email: email,
                 createdAt: createdAt,
+                isSynced: isSynced,
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0

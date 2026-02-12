@@ -5,6 +5,7 @@ class User extends Table {
   TextColumn get name => text()();
   TextColumn get email => text()();
   TextColumn get createdAt => text()();
+  BoolColumn get isSynced => boolean()();
   
 
   @override

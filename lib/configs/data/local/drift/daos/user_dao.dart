@@ -8,8 +8,16 @@ part 'user_dao.g.dart';
 class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
   UserDao(super.db);
 
+  Future<UserData?> getUserNotSynced() async {
+    return await (select(
+      user,
+    )..where((tbl) => tbl.isSynced.equals(false))).getSingleOrNull();
+  }
+
   Future<UserData?> getUserById(String id) async {
-    return await (select(user)..where((tbl) => tbl.id.equals(id))).getSingleOrNull();
+    return await (select(
+      user,
+    )..where((tbl) => tbl.id.equals(id))).getSingleOrNull();
   }
 
   Future<void> insertUser(UserCompanion userCompanion) async {
@@ -18,6 +26,10 @@ class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
 
   Future<void> updateUser(UserData userData) async {
     await update(user).replace(userData);
+  }
+
+  Future<void> updateUserAfterSync(UserData userData) async {
+    await update(user).replace(userData.copyWith(isSynced: true));
   }
 
   Future<void> deleteUser(UserData userData) async {

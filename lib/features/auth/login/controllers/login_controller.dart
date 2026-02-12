@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_management_app/configs/routes/route.dart';
@@ -51,6 +53,7 @@ class LoginController extends GetxController {
         GlobalSnackbar.showError(response.message);
       }
     } catch (e) {
+      log(e.toString());
       GlobalSnackbar.showError(e.toString());
     }
   }

@@ -11,4 +11,8 @@ class ProfileContstant {
   static const helpLabel = LangKeys.helpLabel;
   static const aboutLabel = LangKeys.aboutLabel;
   static const logoutLabel = LangKeys.logoutLabel;
+  static const cancelEditProfileButton = LangKeys.cancelEditProfileButton;
+  static const saveEditProfileButton = LangKeys.saveEditProfileButton;
+  static const editProfileNameTitle = LangKeys.editProfileNameTitle;
+  static const editProfileEmailTitle = LangKeys.editProfileEmailTitle;
 }

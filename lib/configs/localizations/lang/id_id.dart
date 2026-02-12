@@ -31,10 +31,16 @@ final Map<String, String> idId = {
   // ===================== PROFILE =====================
   LangKeys.profileTitle : 'Profil',
   LangKeys.editProfileTitle: 'Ubah Profil',
+  LangKeys.cancelEditProfileButton: 'Batal',
+  LangKeys.saveEditProfileButton: 'Simpan',
   LangKeys.darkmodeLabel: 'Mode Gelap',
   LangKeys.languageLabel: 'Bahasa',
   LangKeys.notificationLabel: 'Notifikasi',
   LangKeys.helpLabel: 'Bantuan',
   LangKeys.aboutLabel: 'Tentang',
   LangKeys.logoutLabel: 'Keluar',
+
+  // ===================== EDIT PROFILE =====================
+  LangKeys.editProfileNameTitle: 'Nama Lengkap',
+  LangKeys.editProfileEmailTitle: 'Alamat Email',
 };

@@ -78,4 +78,50 @@ class GlobalTextfield {
       ],
     );
   }
+
+  static Widget blankTextfield({
+    required BuildContext context,
+    String? hintText,
+    required TextEditingController controller,
+    bool obscureText = false,
+    TextInputType? keyboardType,
+    String? label,
+    String? Function(String?)? validator,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        label != null
+            ? Text(
+                label,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.onSecondary,
+                ),
+              )
+            : const SizedBox.shrink(),
+        label != null ? SizedBox(height: 8.h) : const SizedBox.shrink(),
+        TextFormField(
+          style: Theme.of(context).textTheme.displayMedium,
+          obscureText: obscureText,
+          controller: controller,
+          keyboardType: keyboardType,
+          validator: validator,
+          decoration: InputDecoration(
+            hintStyle: Theme.of(context).textTheme.displayMedium,
+            labelStyle: Theme.of(context).textTheme.displayMedium,
+            errorStyle: Theme.of(context).textTheme.displayMedium?.copyWith(
+              color: Theme.of(context).colorScheme.error,
+            ),
+            fillColor: Colors.transparent,
+            hintText: hintText ?? "",
+            border: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+          ),
+        ),
+      ],
+    );
+  }
 }

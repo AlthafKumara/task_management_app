@@ -28,7 +28,6 @@ class ProfileController extends GetxController {
     }
   }
 
-  void navigateToLogin() {
-    Get.offAllNamed(CustomRoute.login);
-  }
+  void navigateToLogin() => Get.offAllNamed(CustomRoute.login);
+  void navigateToEditProfile() => Get.toNamed(CustomRoute.editProfile);
 }

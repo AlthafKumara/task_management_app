@@ -90,7 +90,7 @@ class AppTheme {
         centerTitle: true,
       ),
       cardTheme: const CardThemeData(
-        color: AppColor.secondaryBackgroundDark,
+        color: AppColor.tertiaryBackgroundDark,
         elevation: 0,
         margin: EdgeInsets.zero,
       ),
