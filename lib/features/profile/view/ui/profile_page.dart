@@ -75,16 +75,18 @@ class ProfilePage extends GetView<ProfileController> {
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
-              controller.dataUser?.isSynced == false
-                  ? Text(
-                      '(Unsynced)',
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        fontWeight: AppTextStyle.semiBold,
+              Obx(() {
+                return controller.dataUser?.isSynced == false
+                    ? Text(
+                        '(Unsynced)',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          fontWeight: AppTextStyle.semiBold,
 
-                        color: AppColor.danger1,
-                      ),
-                    )
-                  : const SizedBox.shrink(),
+                          color: AppColor.danger1,
+                        ),
+                      )
+                    : const SizedBox.shrink();
+              }),
             ],
           ),
           SizedBox(height: 12.h),

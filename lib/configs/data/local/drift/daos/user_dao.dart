@@ -14,6 +14,12 @@ class UserDao extends DatabaseAccessor<AppDatabase> with _$UserDaoMixin {
     )..where((tbl) => tbl.isSynced.equals(false))).getSingleOrNull();
   }
 
+  Stream<UserData?> watchUserById(String id) {
+    return (select(
+      user,
+    )..where((tbl) => tbl.id.equals(id))).watchSingleOrNull();
+  }
+
   Future<UserData?> getUserById(String id) async {
     return await (select(
       user,

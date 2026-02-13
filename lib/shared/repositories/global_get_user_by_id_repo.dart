@@ -16,9 +16,22 @@ class GlobalGetUserById {
       id: localUser.id,
       name: localUser.name,
       email: localUser.email,
-      createdAt: localUser.createdAt,
-    );
+      createdAt: localUser.createdAt, );
 
     return model;
+  }
+
+  Stream<UserModel?> watchUserById(String id) {
+    return userDao.watchUserById(id).map((localUser) {
+      if (localUser == null) return null;
+
+      return UserModel(
+        id: localUser.id,
+        name: localUser.name,
+        email: localUser.email,
+        createdAt: localUser.createdAt,
+        isSynced: localUser.isSynced,
+      );
+    });
   }
 }

@@ -6,5 +6,5 @@ class ApiConstant {
   static final String baseUrl = dotenv.env["baseUrl"]!;
   static const String auth = "/auth";
   static const String categories = "/categories";
-  static const String todo = "/todo";
+  static const String todo = "/todos";
 }
