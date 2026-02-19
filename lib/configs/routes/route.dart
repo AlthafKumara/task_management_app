@@ -7,6 +7,7 @@ abstract class CustomRoute{
   static const String schedule = _Path.schedule;
   static const String profile = _Path.profile;
   static const String editProfile = _Path.editProfile;
+  static const String todoForm = _Path.todoForm;
 
 }
 
@@ -19,4 +20,5 @@ abstract class _Path{
   static const String schedule = '/schedule';
   static const String profile = '/profile';
   static const String editProfile = '/edit-profile';
+  static const String todoForm = '/todo-form';
 }

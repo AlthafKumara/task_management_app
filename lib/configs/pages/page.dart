@@ -15,6 +15,8 @@ import 'package:task_management_app/features/schedule/bindings/schedule_binding.
 import 'package:task_management_app/features/schedule/view/ui/schedule_page.dart';
 import 'package:task_management_app/features/stats/bindings/stats_binding.dart';
 import 'package:task_management_app/features/stats/view/ui/stats_page.dart';
+import 'package:task_management_app/features/todo_form/bindings/todo_form_binding.dart';
+import 'package:task_management_app/features/todo_form/view/ui/todo_form_page.dart';
 import 'package:task_management_app/shared/bindings/global_bottom_nav_binding.dart';
 
 class CustomPage {
@@ -64,6 +66,11 @@ class CustomPage {
       binding: ProfileBinding(),
       name: CustomRoute.editProfile,
       page: () => const EditProfilePage(),
+    ),
+    GetPage(
+      binding: TodoFormBinding(),
+      name: CustomRoute.todoForm,
+      page: () => const TodoFormPage(),
     ),
   ];
 }
