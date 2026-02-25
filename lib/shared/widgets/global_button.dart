@@ -28,6 +28,31 @@ class GlobalButton {
     );
   }
 
+  static Widget primaryButtonsmall({
+    required BuildContext context,
+    required String textButton,
+    required VoidCallback onPressed,
+    bool isLoading = false,
+    bool isDisabled = false,
+  }) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 6.w),
+        backgroundColor: Theme.of(context).primaryColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.r),
+        ),
+      ),
+      child: Text(
+        textButton,
+        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+          color: Theme.of(context).colorScheme.secondary,
+        ),
+      ),
+    );
+  }
+
   static Widget borderButton({
     required BuildContext context,
     required String textButton,

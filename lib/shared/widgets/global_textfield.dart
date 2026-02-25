@@ -81,8 +81,9 @@ class GlobalTextfield {
 
   static Widget blankTextfield({
     required BuildContext context,
-    String? hintText,
     required TextEditingController controller,
+    int? maxLines,
+    String? hintText,
     bool obscureText = false,
     TextInputType? keyboardType,
     String? label,
@@ -101,6 +102,7 @@ class GlobalTextfield {
             : const SizedBox.shrink(),
         label != null ? SizedBox(height: 8.h) : const SizedBox.shrink(),
         TextFormField(
+          maxLines: maxLines ?? 1,
           style: Theme.of(context).textTheme.displayMedium,
           obscureText: obscureText,
           controller: controller,

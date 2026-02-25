@@ -30,4 +30,18 @@ class FieldValidator {
     }
     return null;
   }
+
+  static String? validateTitle(String? value) {
+    if (value == null || value.isEmpty) {
+      return LangKeys.alertFormTitleEmpty.tr;
+    }
+    return null;
+  }
+
+  static String? validateDescription(String? value) {
+    if (value == null || value.isEmpty) {
+      return LangKeys.alertFormDescriptionEmpty.tr;
+    }
+    return null;
+  }
 }

@@ -80,7 +80,7 @@ class AppTheme {
         onSecondary: AppColor.white,
         error: AppColor.danger1,
         onError: AppColor.white,
-        surface: AppColor.tertiaryBackgroundDark,
+        surface: AppColor.grey2,
         onSurface: AppColor.white,
       ),
       appBarTheme: const AppBarTheme(
