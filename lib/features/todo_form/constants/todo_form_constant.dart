@@ -11,10 +11,14 @@ class TodoFormConstant {
   static const String cancelFormButton = LangKeys.cancelFormButton;
   static const String submitFormButton = LangKeys.saveFormButton;
   static const String labelFormTitleField = LangKeys.labelFormtitleField;
-  static const String labelFormDescriptionField = LangKeys.labelFormDescriptionField;
+  static const String labelFormDescriptionField =
+      LangKeys.labelFormDescriptionField;
   static const String hintFormTitleField = LangKeys.hintFormTitleField;
   static const String hintFormDescriptionField =
       LangKeys.hintFormDescriptionField;
   static const String hintCategoryField = LangKeys.hintFormCategoryField;
   static const String priorityFormLabel = LangKeys.hintFormPriorityField;
+  static const String formStartDateLabel = LangKeys.formStartDateLabel;
+  static const String formDeadlineDateLabel = LangKeys.formDeadlineDateLabel;
+  static const String today = LangKeys.today;
 }

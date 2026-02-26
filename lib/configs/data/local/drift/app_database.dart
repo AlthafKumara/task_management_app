@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
+import 'package:task_management_app/configs/data/local/drift/daos/category_dao.dart';
 import 'package:task_management_app/configs/data/local/drift/daos/todo_dao.dart';
 import 'package:task_management_app/configs/data/local/drift/tables/auth_table.dart';
+import 'package:task_management_app/configs/data/local/drift/tables/category_table.dart';
 import 'package:task_management_app/configs/data/local/drift/tables/todo_table.dart';
 import 'package:task_management_app/configs/data/local/drift/tables/user_table.dart';
 import 'package:task_management_app/configs/data/local/drift/daos/user_dao.dart';
@@ -12,7 +14,7 @@ import 'package:task_management_app/utils/enums/todo_enum.dart';
 
 part 'app_database.g.dart';
 
-@DriftDatabase(tables: [User, AuthSession, Todo], daos: [UserDao, AuthDao, TodoDao])
+@DriftDatabase(tables: [User, AuthSession, Todo, Category], daos: [UserDao, AuthDao, TodoDao, CategoryDao])
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 

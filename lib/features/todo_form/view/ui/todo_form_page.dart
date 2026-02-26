@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:task_management_app/features/todo_form/constants/todo_form_constant.dart';
 import 'package:task_management_app/features/todo_form/controllers/todo_form_controller.dart';
+import 'package:task_management_app/features/todo_form/view/components/todo_category_card.dart';
+import 'package:task_management_app/features/todo_form/view/components/todo_date_card.dart';
 import 'package:task_management_app/features/todo_form/view/components/todo_priority_card.dart';
 import 'package:task_management_app/features/todo_form/view/components/todo_title_description_card.dart';
 import 'package:task_management_app/shared/styles/app_text_style.dart';
@@ -50,12 +52,19 @@ class TodoFormPage extends GetView<TodoFormController> {
   Widget _body(BuildContext context) {
     return Padding(
       padding: EdgeInsetsGeometry.symmetric(vertical: 24.h, horizontal: 20.w),
-      child: Column(
-        children: [
-          TodoTitleDescriptionCard(controller: controller),
-          SizedBox(height: 20.h,),
-          TodoPriorityCard(controller: controller),
-        ],
+      child: SingleChildScrollView(
+        physics: AlwaysScrollableScrollPhysics(),
+        child: Column(
+          children: [
+            TodoTitleDescriptionCard(controller: controller),
+            SizedBox(height: 20.h),
+            TodoPriorityCard(controller: controller),
+            SizedBox(height: 20.h),
+            TodoDateCard(controller: controller),
+            SizedBox(height: 20.h),
+            TodoCategoryCard(controller: controller),
+          ],
+        ),
       ),
     );
   }

@@ -8,6 +8,7 @@ final Map<String, String> idId = {
   LangKeys.priorityLow : "Rendah",
 
   // ===================== DAY =====================
+  LangKeys.today : "Hari Ini",
   LangKeys.sunday: 'Minggu',
   LangKeys.monday: 'Senin',
   LangKeys.tuesday: 'Selasa',
@@ -90,6 +91,8 @@ final Map<String, String> idId = {
   LangKeys.hintFormPriorityField: 'Prioritas',
   LangKeys.alertFormTitleEmpty : "Judul Tidak boleh Kosong",
   LangKeys.alertFormDescriptionEmpty : "Deskripsi Tidak boleh Kosong", 
+  LangKeys.formStartDateLabel : "Tanggal Mulai",
+  LangKeys.formDeadlineDateLabel : "Tanggal Selesai",
 
   // ===================== SCHEDULE =====================
   LangKeys.scheduleTitle: 'Tugas Harian',

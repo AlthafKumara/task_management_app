@@ -6,7 +6,8 @@ final Map<String, String> enUs = {
   LangKeys.priorityMedium: "Medium",
   LangKeys.priorityLow: "Low",
 
-  // ===================== DAY =====================
+  // ===================== DAY =====================\
+  LangKeys.today : "Today",
   LangKeys.sunday: 'Sunday',
   LangKeys.monday: 'Monday',
   LangKeys.tuesday: 'Tuesday',
@@ -89,6 +90,8 @@ final Map<String, String> enUs = {
   LangKeys.hintFormPriorityField: 'Priority',
   LangKeys.alertFormTitleEmpty: 'Title cannot be empty',
   LangKeys.alertFormDescriptionEmpty: 'Description cannot be empty',
+  LangKeys.formStartDateLabel: 'Start Date',
+  LangKeys.formDeadlineDateLabel: 'Deadline Date',
 
   // ===================== SCHEDULE =====================
   LangKeys.scheduleTitle: 'Daily Tasks',

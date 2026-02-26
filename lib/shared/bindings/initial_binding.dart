@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:task_management_app/configs/data/local/drift/app_database.dart';
+import 'package:task_management_app/configs/data/local/drift/daos/category_dao.dart';
 import 'package:task_management_app/configs/data/local/drift/daos/todo_dao.dart';
 import 'package:task_management_app/configs/data/local/drift/daos/user_dao.dart';
 import 'package:task_management_app/configs/data/local/local_secure_storage.dart';
@@ -21,6 +22,8 @@ class InitialBinding extends Bindings {
     Get.lazyPut(() => UserDao(Get.find<AppDatabase>()));
     Get.lazyPut(() => AuthDao(Get.find<AppDatabase>()));
     Get.lazyPut(() => TodoDao(Get.find<AppDatabase>()));
+    Get.lazyPut(() => CategoryDao(Get.find<AppDatabase>()));
+    
 
     
     Get.lazyPut(() => GlobalGetUserById(userDao: Get.find<UserDao>()));

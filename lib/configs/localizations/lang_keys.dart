@@ -1,11 +1,11 @@
 abstract class LangKeys {
-
   // ===================== GLOBAL =====================
   static const priorityHigh = 'priority_high';
   static const priorityMedium = 'priority_medium';
   static const priorityLow = 'priority_low';
 
   // ===================== DAY ======================
+  static const today = "today";
   static const sunday = 'sunday';
   static const monday = 'monday';
   static const tuesday = 'tuesday';
@@ -53,10 +53,9 @@ abstract class LangKeys {
   static const statsLabel = 'statslabel';
   static const profileLabel = 'profilelabel';
 
-
   // ===================== HOME =====================
   static const welcomeLabel = 'welcomelabel';
-  
+
   // ===================== PROFILE =====================
   static const profileTitle = 'profiletitle';
   static const editProfileTitle = 'edit_profiletitle';
@@ -89,6 +88,8 @@ abstract class LangKeys {
   static const hintFormPriorityField = 'hint_priority_field';
   static const alertFormTitleEmpty = 'alert_form_title_empty';
   static const alertFormDescriptionEmpty = 'alert_form_description_empty';
+  static const formStartDateLabel = 'form_start_date_label';
+  static const formDeadlineDateLabel = 'form_deadline_date_label';
 
   // ===================== SCHEDULE =====================
   static const scheduleTitle = 'schedule_title';
